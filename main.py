@@ -6,7 +6,6 @@ app = FastAPI()
 class Name(BaseModel):
     name: str
 
-# This will store all the names received
 recognized_names = []
 
 @app.post("/names/")
@@ -17,3 +16,7 @@ def add_name(name: Name):
 @app.get("/names/")
 def get_names():
     return {"recognized_names": recognized_names}
+
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the Name API!"}
